@@ -30,15 +30,13 @@
     background-color: #fff;
 }
 
-.miusage-headers{
-   padding: 20px;
-   border: 1px solid #e5e6e6;
-   background-color: #fafafa;
+.miusage-users-table {
+    width: 100%;
+    padding: 20px;
 }
 
-.miusage-users-list span {
-    padding: 0px 80px 0px 80px;
-    margin: 0px;
+.miusage-users-headers th, .miusage-users-data td{
+    padding-bottom: 20px;
 }
 
 /*# sourceMappingURL=miusage-entry.css.map*/

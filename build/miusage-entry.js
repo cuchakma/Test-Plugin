@@ -54,7 +54,7 @@ const UserList = () => {
   const [headers, setheaders] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
   const [list, setist] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    const fetchData = fetch('https://miusage.com/v1/challenge/1/ ');
+    const fetchData = fetch("https://miusage.com/v1/challenge/1/");
     fetchData.then(response => {
       return response.json();
     }).then(list => {
@@ -62,14 +62,29 @@ const UserList = () => {
       setist(list.data.rows);
     });
   }, [setist.length]);
+  let list_keys = Object.keys(list);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: 'miusage-users-list'
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "miusage-headers"
-  }, headers.length > 0 && headers.map(value => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, value);
-  })));
+    className: "miusage-users-list"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
+    className: "miusage-users-table"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: "miusage-users-headers"
+  }, headers.map(value => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", null, value);
+  })), list_keys.map(value => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+      className: "miusage-users-data"
+    }, Object.values(list[value]).map(value => {
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, value);
+    }));
+  })
+  // <tr>
+  //     <td>January</td>
+  //     <td>$100</td>
+  // </tr>
+  ));
 };
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserList);
 
 /***/ }),
