@@ -27,7 +27,7 @@ class Asset extends AssetModel {
         global $current_screen;
         foreach ( $this->script_handles as $asset_object ) {
             if ( $current_screen->base === $asset_object->screen ) {
-                wp_register_script( $asset_object->handle, $asset_object->fileurl, $asset_object->deps, $asset_object->version );
+                wp_register_script( $asset_object->handle, $asset_object->fileurl, $asset_object->deps, $asset_object->version, $asset_object->in_footer );
             }
         }
     }

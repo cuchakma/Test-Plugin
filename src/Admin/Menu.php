@@ -2,8 +2,8 @@
 
 namespace Miusage\Admin;
 
+use Miusage\Asset;
 use Miusage\Helpers;
-use Miusage\Models\AssetModel;
 
 class Menu {
 
@@ -17,13 +17,13 @@ class Menu {
 
     private $icon = 'dashicons-share-alt2';
 
-    private $position = '10';
+    private $position = 10;
 
     private $menu_path = VIEWS_PATH . 'admin/menu-template.php';
 
     private $assets_object;
 
-    public function __construct( AssetModel $assets ) {
+    public function __construct( Asset $assets ) {
         $this->assets_object = $assets;
         add_action( 'admin_menu', [$this, 'intialize_menu'] );
         add_action( 'admin_enqueue_scripts', [$this, 'register_styles_scripts'] );
@@ -36,7 +36,7 @@ class Menu {
     public function register_styles_scripts( $hook ) {
         $script_deps = require_once MIUSAGE_ROOT_PATH . '/build/miusage-entry.asset.php';
         $this->assets_object->insert_style_deps( 'miusage.css', 'miusage-admin', [], rand(), 'toplevel_page_miusage' );
-        $this->assets_object->insert_script_deps( 'miusage-entry.js', 'miusage-admin', $script_deps['dependencies'], $script_deps['version'], false, 'toplevel_page_miusage' );
+        $this->assets_object->insert_script_deps( 'miusage-entry.js', 'miusage-admin', $script_deps['dependencies'], $script_deps['version'], true, 'toplevel_page_miusage' );
         $this->assets_object->register_misuage_style();
         $this->assets_object->register_misuage_script();
 

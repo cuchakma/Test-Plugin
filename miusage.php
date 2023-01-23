@@ -23,8 +23,8 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use DI\ContainerBuilder;
 use Miusage\Admin\Menu;
+use DI\ContainerBuilder;
 
 final Class Miusage {
     public static $instance = null;
