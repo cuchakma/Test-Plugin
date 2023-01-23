@@ -1,0 +1,20 @@
+{
+    "name": "cupid/miusage",
+    "description": "Test plugin",
+    "type": "project",
+    "license": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Miusage\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cupid Chakma"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php-di/php-di": "^7.0@beta"
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "miusage",
+  "version": "1.0.0",
+  "description": "a plugin built using react",
+  "main": "./assets/admin/react/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuchakma/Miusage.git"
+  },
+  "keywords": [
+    "misuage"
+  ],
+  "author": "Cupid Chakma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cuchakma/Miusage/issues"
+  },
+  "homepage": "https://github.com/cuchakma/Miusage#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^25.2.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
