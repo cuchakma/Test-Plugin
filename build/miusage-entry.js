@@ -16,12 +16,110 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _assets_Header_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/Header.css */ "./assets/admin/react/assets/Header.css");
+
 
 
 const Header = () => {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Hello Man");
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'miusage-header'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: 'miusage-posts',
+    href: "#"
+  }, "Users"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
+
+/***/ }),
+
+/***/ "./assets/admin/react/components/UserList.js":
+/*!***************************************************!*\
+  !*** ./assets/admin/react/components/UserList.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _assets_UserList_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/UserList.css */ "./assets/admin/react/assets/UserList.css");
+
+
+
+const UserList = () => {
+  const [headers, setheaders] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+  const [list, setist] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    const fetchData = fetch('https://miusage.com/v1/challenge/1/ ');
+    fetchData.then(response => {
+      return response.json();
+    }).then(list => {
+      setheaders(list.data.headers);
+      setist(list.data.rows);
+    });
+  }, [setist.length]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'miusage-users-list'
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "miusage-headers"
+  }, headers.length > 0 && headers.map(value => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, value);
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserList);
+
+/***/ }),
+
+/***/ "./assets/admin/react/components/Wrapper.js":
+/*!**************************************************!*\
+  !*** ./assets/admin/react/components/Wrapper.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const Wrapper = props => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: 'miusage-parent-wrapper'
+  }, props.children);
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Wrapper);
+
+/***/ }),
+
+/***/ "./assets/admin/react/assets/Header.css":
+/*!**********************************************!*\
+  !*** ./assets/admin/react/assets/Header.css ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./assets/admin/react/assets/UserList.css":
+/*!************************************************!*\
+  !*** ./assets/admin/react/assets/UserList.css ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
 
 /***/ }),
 
@@ -136,12 +234,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "react-dom");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Header */ "./assets/admin/react/components/Header.js");
+/* harmony import */ var _components_Wrapper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Wrapper */ "./assets/admin/react/components/Wrapper.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Header */ "./assets/admin/react/components/Header.js");
+/* harmony import */ var _components_UserList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/UserList */ "./assets/admin/react/components/UserList.js");
 
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById('miusage'));
+
+
+react_dom__WEBPACK_IMPORTED_MODULE_2___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Wrapper__WEBPACK_IMPORTED_MODULE_3__["default"], null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_UserList__WEBPACK_IMPORTED_MODULE_5__["default"], null)), document.getElementById('miusage'));
 })();
 
 /******/ })()

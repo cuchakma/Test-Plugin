@@ -35,7 +35,7 @@ class Menu {
 
     public function register_styles_scripts( $hook ) {
         $script_deps = require_once MIUSAGE_ROOT_PATH . '/build/miusage-entry.asset.php';
-        $this->assets_object->insert_style_deps( 'miusage.css', 'miusage-admin', [], rand(), 'toplevel_page_miusage' );
+        $this->assets_object->insert_style_deps( 'miusage-entry.css', 'miusage-admin', [], rand(), 'toplevel_page_miusage' );
         $this->assets_object->insert_script_deps( 'miusage-entry.js', 'miusage-admin', $script_deps['dependencies'], $script_deps['version'], true, 'toplevel_page_miusage' );
         $this->assets_object->register_misuage_style();
         $this->assets_object->register_misuage_script();

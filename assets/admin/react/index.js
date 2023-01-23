@@ -1,9 +1,14 @@
-import React, {version} from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
+import Wrapper from './components/Wrapper';
 import Header from './components/Header';
+import UserList from './components/UserList';
 
 ReactDom.render(
-    <Header/>,
+    <Wrapper>
+        <Header/>
+        <UserList/>
+    </Wrapper>,
     document.getElementById('miusage')
 );
 

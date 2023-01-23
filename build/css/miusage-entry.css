@@ -1,0 +1,44 @@
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/admin/react/assets/Header.css ***!
+  \******************************************************************************************************************************************************************************************/
+.miusage-parent-wrapper {
+    width: 100%;
+}
+
+.miusage-header{
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    background-color: #fff;
+}
+.miusage-posts{
+    margin: 10px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e27730;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+}
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./assets/admin/react/assets/UserList.css ***!
+  \********************************************************************************************************************************************************************************************/
+.miusage-users-list {
+    margin: 0px;
+    padding: 20px;
+    font-size: 16px;
+    color: #222;
+    text-align: center;
+    background-color: #fff;
+}
+
+.miusage-headers{
+   padding: 20px;
+   border: 1px solid #e5e6e6;
+   background-color: #fafafa;
+}
+
+.miusage-users-list span {
+    padding: 0px 80px 0px 80px;
+    margin: 0px;
+}
+
+/*# sourceMappingURL=miusage-entry.css.map*/

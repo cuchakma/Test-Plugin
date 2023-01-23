@@ -50,6 +50,7 @@ final Class Miusage {
         define( 'ADMIN_ASSETS_CSS_PATH', MIUSAGE_URL . 'assets/admin/css' );
         define( 'ADMIN_ASSETS_JS_PATH', MIUSAGE_URL . 'assets/admin/build' );
         define( 'ADMIN_BUILD_PATH', MIUSAGE_URL . 'build' );
+        define( 'ADMIN_CSS_BUILD_PATH', ADMIN_BUILD_PATH . '/css' );
     }
 }
 

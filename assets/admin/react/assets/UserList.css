@@ -1,0 +1,19 @@
+.miusage-users-list {
+    margin: 0px;
+    padding: 20px;
+    font-size: 16px;
+    color: #222;
+    text-align: center;
+    background-color: #fff;
+}
+
+.miusage-headers{
+   padding: 20px;
+   border: 1px solid #e5e6e6;
+   background-color: #fafafa;
+}
+
+.miusage-users-list span {
+    padding: 0px 80px 0px 80px;
+    margin: 0px;
+}

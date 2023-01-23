@@ -3,5 +3,5 @@
 use Miusage\Asset;
 
 return [
-    Asset::class => DI\create( Asset::class )->constructor( ADMIN_ASSETS_CSS_PATH, ADMIN_BUILD_PATH )
+    Asset::class => DI\create( Asset::class )->constructor( ADMIN_CSS_BUILD_PATH, ADMIN_BUILD_PATH )
 ];
