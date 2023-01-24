@@ -52,6 +52,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const UserList = () => {
   const [headers, setheaders] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+  const [showList, showListState] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const [list, setist] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     const fetchData = fetch("https://miusage.com/v1/challenge/1/");
@@ -62,10 +63,16 @@ const UserList = () => {
       setist(list.data.rows);
     });
   }, [setist.length]);
+  function setClickedState(event) {
+    showListState(true);
+  }
   let list_keys = Object.keys(list);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "miusage-users-list"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
+  }, showList == false && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "misuage-show-list",
+    onClick: setClickedState
+  }, "Show List"), showList && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
     className: "miusage-users-table"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: "miusage-users-headers"
@@ -77,14 +84,8 @@ const UserList = () => {
     }, Object.values(list[value]).map(value => {
       return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, value);
     }));
-  })
-  // <tr>
-  //     <td>January</td>
-  //     <td>$100</td>
-  // </tr>
-  ));
+  })));
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserList);
 
 /***/ }),

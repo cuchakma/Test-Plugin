@@ -39,4 +39,26 @@
     padding-bottom: 20px;
 }
 
+.misuage-show-list {
+    background-color: #e27730;
+    border-color: #e27730;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 12px;
+    min-height: 35px;
+    border: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
 /*# sourceMappingURL=miusage-entry.css.map*/

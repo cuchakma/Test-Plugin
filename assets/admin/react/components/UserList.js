@@ -3,6 +3,7 @@ import "../assets/UserList.css";
 
 const UserList = () => {
   const [headers, setheaders] = useState([]);
+  const [showList, showListState] = useState(false);
   const [list, setist] = useState([]);
 
   useEffect(() => {
@@ -17,11 +18,16 @@ const UserList = () => {
       });
   }, [setist.length]);
 
+  function setClickedState(event) {
+    showListState(true);
+  }
+  
   let list_keys = Object.keys(list);
-
+  
   return (
     <div className={"miusage-users-list"}>
-      <table className={"miusage-users-table"}>
+      {showList == false && <button className="misuage-show-list" onClick={setClickedState}>Show List</button>}
+      {showList && <table className={"miusage-users-table"}>
         <tr className={"miusage-users-headers"}>
             {
                 headers.map((value) => {
@@ -38,12 +44,8 @@ const UserList = () => {
                 }</tr>
                 
             })
-            // <tr>
-            //     <td>January</td>
-            //     <td>$100</td>
-            // </tr>
         }
-      </table>
+      </table>}
     </div>
   );
 };
