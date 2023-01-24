@@ -21,7 +21,7 @@ const UserList = () => {
   function setClickedState(event) {
     showListState(true);
   }
-  
+
   let list_keys = Object.keys(list);
   
   return (

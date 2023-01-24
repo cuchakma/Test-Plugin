@@ -25,6 +25,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Miusage\Admin\Menu;
 use DI\ContainerBuilder;
+use Miusage\Rest\Payload;
 
 final Class Miusage {
     public static $instance = null;
@@ -32,6 +33,7 @@ final Class Miusage {
         if ( self::$instance == null ) {
             self::define_constants();
             self::$instance = self::intialize_container();
+            self::$instance->get( Payload::class );
             self::$instance->get( Menu::class );
         }
         return self::$instance;
