@@ -1,33 +1,44 @@
 import React, { useEffect, useState } from "react";
+import {LineWave} from 'react-loader-spinner';
 import "../assets/UserList.css";
 
 const UserList = () => {
-  const [headers, setheaders] = useState([]);
-  const [showList, showListState] = useState(false);
-  const [list, setist] = useState([]);
+  const [list, setList]                 = useState([]);
+  const [showButton, setShowButton]     = useState(true);
+  const [counter, setCounter]           = useState(1);
+  const [showLoader, setLoader]         = useState(true);
+  const [loadMoreText, setloadMoreText] = useState('Show List');
+  let headers                           = ['ID', 'First Name', 'Last Name', 'Email', 'Date'];
 
   useEffect(() => {
-    const fetchData = fetch("https://miusage.com/v1/challenge/1/");
-    fetchData
-      .then((response) => {
-        return response.json();
-      })
-      .then((list) => {
-        setheaders(list.data.headers);
-        setist(list.data.rows);
-      });
-  }, [setist.length]);
+    let fetchList = fetch( miusage.miusage_json_url + '?number='+counter);
+    fetchList.then((response) => {
+      if( response.status == 200 ) {
+        setLoader(false);
+        setloadMoreText('Show List');
+       return response.json();
+      }
+    }).then((list) => {
+      setList(list);
+    });
+  }, [counter]);
 
   function setClickedState(event) {
-    showListState(true);
+    setloadMoreText('Loading....');
+    if( list.length + 1 === parseInt( miusage.miusage_users_number ) ) {
+      setShowButton(false);
+    }
+    setCounter((prevData) => {
+      return prevData + 1;
+    });
   }
 
   let list_keys = Object.keys(list);
-  
+
   return (
     <div className={"miusage-users-list"}>
-      {showList == false && <button className="misuage-show-list" onClick={setClickedState}>Show List</button>}
-      {showList && <table className={"miusage-users-table"}>
+       {showLoader && <LineWave height="100" width="100" color="#4fa94d" ariaLabel="line-wave" wrapperStyle={''} wrapperClass={'miusage-line-wave'} visible={true} firstLineColor="" middleLineColor="" lastLineColor=""/>}
+       {!showLoader && <table className={"miusage-users-table"}>
         <tr className={"miusage-users-headers"}>
             {
                 headers.map((value) => {
@@ -46,6 +57,7 @@ const UserList = () => {
             })
         }
       </table>}
+      { !showLoader && (showButton == true && <button className="misuage-show-list" onClick={setClickedState}>{loadMoreText}</button>)}
     </div>
   );
 };

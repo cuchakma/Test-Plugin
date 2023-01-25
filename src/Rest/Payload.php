@@ -24,10 +24,9 @@ class Payload extends WP_REST_Controller {
 
     public function fetch_users( $request ) {
         if ( ! empty( $request['number'] ) ) {
-            $number   = $request['number'];
-            $response = wp_remote_get( 'https://miusage.com/v1/challenge/1/' );
-            $data     = ! empty( $response['body'] ) ? json_decode( $response['body'] ) : '';
-            $rows     = ! empty( $data->data->rows ) ? array_slice( (array) $data->data->rows, 0, $number ) : '';
+            $number = $request['number'];
+            $data   = get_option( 'miusage_users' );
+            $rows   = ! empty( $data ) ? array_slice( $data, 0, $number ) : '';
             return $rows;
         }
     }

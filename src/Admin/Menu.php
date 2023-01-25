@@ -40,6 +40,11 @@ class Menu {
         $this->assets_object->register_misuage_style();
         $this->assets_object->register_misuage_script();
 
+        wp_localize_script( 'miusage-admin', 'miusage', [
+            'miusage_json_url'     => site_url() . '/wp-json/miusage/v1/users',
+            'miusage_users_number' => Helpers::get_users_list_count()
+        ] );
+
         if ( $hook === 'toplevel_page_miusage' ) {
             $this->assets_object->enqueue_style( 'miusage-admin' );
         }

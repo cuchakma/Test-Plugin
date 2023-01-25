@@ -39,6 +39,11 @@
     padding-bottom: 20px;
 }
 
+.miusage-line-wave {
+    display: flex;
+    justify-content: center;
+}
+
 .misuage-show-list {
     background-color: #e27730;
     border-color: #e27730;
