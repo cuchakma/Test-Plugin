@@ -23,11 +23,12 @@ class Payload extends WP_REST_Controller {
     }
 
     public function fetch_users( $request ) {
-        $number   = ! empty( $request['number'] ) ? (int) $request['number'] : 10;
-        $response = wp_remote_get( 'https://miusage.com/v1/challenge/1/' );
-        $data     = ! empty( $response['body'] ) ? json_decode( $response['body'] ) : '';
-        $rows     = ! empty( $data->data->rows ) ? array_slice( (array) $data->data->rows, 0, $number ) : '';
-        return $rows;
+        if ( ! empty( $request['number'] ) ) {
+            $number   = $request['number'];
+            $response = wp_remote_get( 'https://miusage.com/v1/challenge/1/' );
+            $data     = ! empty( $response['body'] ) ? json_decode( $response['body'] ) : '';
+            $rows     = ! empty( $data->data->rows ) ? array_slice( (array) $data->data->rows, 0, $number ) : '';
+            return $rows;
+        }
     }
-
 }
