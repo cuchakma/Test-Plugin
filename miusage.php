@@ -23,6 +23,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+use Miusage\Cron;
 use Miusage\Admin\Menu;
 use DI\ContainerBuilder;
 use Miusage\Rest\Payload;
@@ -31,9 +32,9 @@ final Class Miusage {
     public static $instance = null;
     public static function init() {
         if ( self::$instance == null ) {
-            self::insert_data();
             self::define_constants();
             self::$instance = self::intialize_container();
+            new Cron();
             self::$instance->get( Payload::class );
             self::$instance->get( Menu::class );
         }
@@ -54,17 +55,6 @@ final Class Miusage {
         define( 'ADMIN_ASSETS_JS_PATH', MIUSAGE_URL . 'assets/admin/build' );
         define( 'ADMIN_BUILD_PATH', MIUSAGE_URL . 'build' );
         define( 'ADMIN_CSS_BUILD_PATH', ADMIN_BUILD_PATH . '/css' );
-    }
-
-    public static function insert_data() {
-        if ( empty( get_option( 'miusage_users' ) ) ) {
-            $response = ! ( wp_remote_get( 'https://miusage.com/v1/challenge/1/' ) instanceof WP_Error ) ? wp_remote_get( 'https://miusage.com/v1/challenge/1/' ) : '';
-            $data     = ! empty( $response['body'] ) ? json_decode( $response['body'] ) : '';
-            $data     = (array) $data->data->rows;
-            sort( $data );
-            add_option( 'miusage_users', $data );
-        }
-        return get_option( 'miusage_users' );
     }
 }
 
