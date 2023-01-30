@@ -22,10 +22,10 @@
  */
 
 require_once __DIR__ . '/vendor/autoload.php';
-
 use Miusage\Cron;
 use Miusage\Admin\Menu;
 use DI\ContainerBuilder;
+use Miusage\Blocks\Block;
 use Miusage\Rest\Payload;
 
 final Class Miusage {
@@ -35,6 +35,7 @@ final Class Miusage {
             self::define_constants();
             self::$instance = self::intialize_container();
             new Cron();
+            self::$instance->get( Block::class );
             self::$instance->get( Payload::class );
             self::$instance->get( Menu::class );
         }

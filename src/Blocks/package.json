@@ -1,0 +1,23 @@
+{
+  "name": "blocks",
+  "version": "1.0.0",
+  "description": "blocks for miusage plugin",
+  "main": "./block-1/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "keywords": [
+    "miusage-blocks"
+  ],
+  "author": "cupid chakma",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.75.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "reload": "^3.2.1"
+  }
+}
