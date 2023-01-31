@@ -1,0 +1,9 @@
+{
+    "apiVersion": 2,
+    "title": "Miusage Block",
+    "name": "miusage/block-1",
+    "category": "general",
+    "description": "This is a test block",
+    "textdomain": "miusage"
+  }
+  

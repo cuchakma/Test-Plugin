@@ -1,0 +1,68 @@
+/*!****************************************************************************!*\
+  !*** css ../../node_modules/css-loader/dist/cjs.js!./block-1/css/syle.css ***!
+  \****************************************************************************/
+.miusage-parent-wrapper {
+    width: 100% !important;
+}
+
+.miusage-header{
+    margin: 20px 10px 20px 0px !important;
+    padding: 20px !important;
+    background-color: #fff !important;
+}
+
+.miusage-posts{
+    margin: 10px !important;
+    padding-bottom: 20px !important;
+    border-bottom: 2px solid #e27730 !important;
+    font-size: 14px !important;
+    color: #666 !important;
+    text-decoration: none !important;
+}
+
+.miusage-users-list {
+    margin: 20px !important;
+    padding: 20px !important;
+    font-size: 16px !important;
+    color: #222 !important; 
+    text-align: center !important;
+    background-color: #fff !important;
+}
+
+.miusage-users-table {
+    width: 100% !important;
+    padding: 20px !important;
+}
+
+.miusage-users-headers th, .miusage-users-data td{
+    padding-bottom: 20px !important;
+}
+
+.miusage-line-wave {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.misuage-show-list {
+    background-color: #e27730 !important;
+    border-color: #e27730 !important;
+    color: #fff !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 8px 12px !important;
+    min-height: 35px !important;
+    border: 0 !important;
+    border-radius: 3px !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/*# sourceMappingURL=style.css.map*/
