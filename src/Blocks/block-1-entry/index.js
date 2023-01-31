@@ -46,14 +46,15 @@ const { useEffect, useState } = wp.element;
 const { ToggleControl } = wp.components;
 const { InspectorControls, useBlockProps } = wp.blockEditor;
 
-const Edit = ({ attributes }) => {
+const Edit = ({ attributes, setAttributes }) => {
   const [list, setList] = useState([]);
   const [showButton, setShowButton] = useState(true);
   const [counter, setCounter] = useState(1);
   const [showLoader, setLoader] = useState(true);
   const [loadMoreText, setloadMoreText] = useState("Show List");
-  const [enableColumn, setColumns] = useState(attributes.showColums);
+  const { showColums } = attributes;
   let headers = ["ID", "First Name", "Last Name", "Email", "Date"];
+  console.log(showColums);
   useEffect(() => {
     let fetchList = fetch(miusage.miusage_json_url + "?number=" + counter);
     fetchList.then((response) => {
@@ -77,9 +78,9 @@ const Edit = ({ attributes }) => {
   }
   let list_keys = Object.keys(list);
   let blockProps = useBlockProps();
-  return /* @__PURE__ */ React.createElement("div", __spreadValues({}, blockProps), /* @__PURE__ */ React.createElement(InspectorControls, null, /* @__PURE__ */ React.createElement("div", { className: "miusage-toggle-control" }, /* @__PURE__ */ React.createElement(ToggleControl, { checked: enableColumn, label: "Enable/Disable Columns", onChange: () => {
-    setColumns((state) => !state);
-  } }))), /* @__PURE__ */ React.createElement("div", { className: "miusage-parent-wrapper" }, /* @__PURE__ */ React.createElement("div", { className: "miusage-header" }, /* @__PURE__ */ React.createElement("a", { className: "miusage-posts", href: "#" }, "Users")), enableColumn && /* @__PURE__ */ React.createElement("div", { className: "miusage-users-list" }, showLoader && /* @__PURE__ */ React.createElement(react_loader_spinner__WEBPACK_IMPORTED_MODULE_0__.LineWave, { height: "100", width: "100", color: "#4fa94d", ariaLabel: "line-wave", wrapperStyle: "", wrapperClass: "miusage-line-wave", visible: true, firstLineColor: "", middleLineColor: "", lastLineColor: "" }), !showLoader && /* @__PURE__ */ React.createElement("table", { className: "miusage-users-table" }, /* @__PURE__ */ React.createElement("tr", { className: "miusage-users-headers" }, headers.map((value) => {
+  return /* @__PURE__ */ React.createElement("div", __spreadValues({}, blockProps), /* @__PURE__ */ React.createElement(InspectorControls, null, /* @__PURE__ */ React.createElement("div", { className: "miusage-toggle-control" }, /* @__PURE__ */ React.createElement(ToggleControl, { checked: showColums, label: "Enable/Disable Columns", onChange: (event) => {
+    setAttributes({ showColums: event });
+  } }))), /* @__PURE__ */ React.createElement("div", { className: "miusage-parent-wrapper" }, /* @__PURE__ */ React.createElement("div", { className: "miusage-header" }, /* @__PURE__ */ React.createElement("a", { className: "miusage-posts", href: "#" }, "Users")), showColums && /* @__PURE__ */ React.createElement("div", { className: "miusage-users-list" }, showLoader && /* @__PURE__ */ React.createElement(react_loader_spinner__WEBPACK_IMPORTED_MODULE_0__.LineWave, { height: "100", width: "100", color: "#4fa94d", ariaLabel: "line-wave", wrapperStyle: "", wrapperClass: "miusage-line-wave", visible: true, firstLineColor: "", middleLineColor: "", lastLineColor: "" }), !showLoader && /* @__PURE__ */ React.createElement("table", { className: "miusage-users-table" }, /* @__PURE__ */ React.createElement("tr", { className: "miusage-users-headers" }, headers.map((value) => {
     return /* @__PURE__ */ React.createElement("th", null, value);
   })), list_keys.map((value) => {
     return /* @__PURE__ */ React.createElement("tr", { className: "miusage-users-data" }, Object.values(list[value]).map((value2) => {
@@ -4733,7 +4734,8 @@ registerBlockType("miusage/block-1", {
   description: "This is a test block",
   attributes,
   category: "common",
-  edit: _src_Edit__WEBPACK_IMPORTED_MODULE_1__["default"]
+  edit: _src_Edit__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: () => null
 });
 
 })();

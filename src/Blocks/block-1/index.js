@@ -14,5 +14,6 @@ registerBlockType('miusage/block-1', {
     description: "This is a test block",
     attributes,
     category: "common",
-    edit:Edit
+    edit:Edit,
+    save:() => null
 });

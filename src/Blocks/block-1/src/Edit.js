@@ -3,15 +3,15 @@ const {ToggleControl} = wp.components;
 const {InspectorControls, useBlockProps} = wp.blockEditor;
 import {LineWave} from  'react-loader-spinner';
 
-const Edit = ({attributes}) => {
+const Edit = ({attributes, setAttributes}) => {
     const [list, setList]                 = useState([]);
     const [showButton, setShowButton]     = useState(true);
     const [counter, setCounter]           = useState(1);
     const [showLoader, setLoader]         = useState(true);
     const [loadMoreText, setloadMoreText] = useState('Show List');
-    const [enableColumn, setColumns]      = useState(attributes.showColums);
+    const {showColums}                    = attributes;
     let headers                           = ['ID', 'First Name', 'Last Name', 'Email', 'Date'];
-
+    console.log(showColums);
     useEffect(() => {
         let fetchList = fetch( miusage.miusage_json_url + '?number='+counter);
         fetchList.then((response) => {
@@ -41,8 +41,8 @@ const Edit = ({attributes}) => {
             <div {...blockProps}>
                 <InspectorControls>
                     <div className='miusage-toggle-control'>
-                        <ToggleControl checked={enableColumn} label="Enable/Disable Columns" onChange={() => {
-                            setColumns( (state) => !state )
+                        <ToggleControl checked={showColums} label="Enable/Disable Columns" onChange={(event) => {
+                           setAttributes({showColums:event})
                         }}/>    
                     </div>
                 </InspectorControls>
@@ -50,7 +50,7 @@ const Edit = ({attributes}) => {
                     <div className='miusage-header'>
                         <a className='miusage-posts' href='#'>Users</a>
                     </div>
-                    {enableColumn && <div className={"miusage-users-list"}>
+                    {showColums && <div className={"miusage-users-list"}>
                         {showLoader && <LineWave height="100" width="100" color="#4fa94d" ariaLabel="line-wave" wrapperStyle={''} wrapperClass={'miusage-line-wave'} visible={true} firstLineColor="" middleLineColor="" lastLineColor=""/>}
                         {!showLoader && <table className={"miusage-users-table"}>
                             <tr className={"miusage-users-headers"}>
