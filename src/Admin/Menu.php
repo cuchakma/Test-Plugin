@@ -34,13 +34,32 @@ class Menu {
     }
 
     public function register_styles_scripts( $hook ) {
-        $script_deps = require_once MIUSAGE_ROOT_PATH . '/build/miusage-entry.asset.php';
+        $script_deps       = require_once MIUSAGE_ROOT_PATH . '/build/miusage-entry.asset.php';
+        $script_deps_block = [
+            'lodash',
+            'wp-i18n',
+            'wp-element',
+            'wp-hooks',
+            'wp-util',
+            'wp-components',
+            'wp-blocks',
+            'wp-editor',
+            'wp-block-editor',
+            'wp-edit-post'
+        ];
         $this->assets_object->insert_style_deps( 'miusage-entry.css', 'miusage-admin', [], rand(), 'toplevel_page_miusage' );
+        $this->assets_object->insert_style_deps( 'style.css', 'miusage-block-admin', [], rand(), 'post', MIUSAGE_URL . 'src/Blocks/block-1-entry' );
         $this->assets_object->insert_script_deps( 'miusage-entry.js', 'miusage-admin', $script_deps['dependencies'], $script_deps['version'], true, 'toplevel_page_miusage' );
+        $this->assets_object->insert_script_deps( 'index.js', 'miusage-block-admin', $script_deps_block, rand(), true, 'post', MIUSAGE_URL . 'src/Blocks/block-1-entry' );
         $this->assets_object->register_misuage_style();
         $this->assets_object->register_misuage_script();
 
         wp_localize_script( 'miusage-admin', 'miusage', [
+            'miusage_json_url'     => site_url() . '/wp-json/miusage/v1/users',
+            'miusage_users_number' => Helpers::get_users_list_count()
+        ] );
+
+        wp_localize_script( 'miusage-block-admin', 'miusage', [
             'miusage_json_url'     => site_url() . '/wp-json/miusage/v1/users',
             'miusage_users_number' => Helpers::get_users_list_count()
         ] );

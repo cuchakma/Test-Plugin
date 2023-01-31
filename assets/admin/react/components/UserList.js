@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {LineWave} from 'react-loader-spinner';
+import { LineWave } from  'react-loader-spinner';
 import "../assets/UserList.css";
 
 const UserList = () => {

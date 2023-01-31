@@ -22,9 +22,9 @@ abstract class AssetModel {
         ++self::$instance;
     }
 
-    public function insert_style_deps( $filename, $handle, $deps, $version, $screen ) {
+    public function insert_style_deps( $filename, $handle, $deps, $version, $screen, $additional_path = '' ) {
         $asset_object          = new stdClass();
-        $asset_object->fileurl = $this->css_path . '/' . $filename;
+        $asset_object->fileurl = ! empty( $additional_path ) ? $additional_path . '/' . $filename : $this->css_path . '/' . $filename;
         $asset_object->handle  = $handle;
         $asset_object->deps    = $deps;
         $asset_object->version = $version;
@@ -32,9 +32,9 @@ abstract class AssetModel {
         array_push( $this->style_handles, $asset_object );
     }
 
-    public function insert_script_deps( $filename, $handle, $deps, $version, $in_footer, $screen ) {
+    public function insert_script_deps( $filename, $handle, $deps, $version, $in_footer, $screen, $additional_path = '' ) {
         $asset_object            = new stdClass();
-        $asset_object->fileurl   = $this->js_path . '/' . $filename;
+        $asset_object->fileurl   = ! empty( $additional_path ) ? $additional_path . '/' . $filename : $this->js_path . '/' . $filename;
         $asset_object->handle    = $handle;
         $asset_object->deps      = $deps;
         $asset_object->version   = $version;
