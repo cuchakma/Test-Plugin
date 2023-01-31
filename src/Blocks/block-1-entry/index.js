@@ -26,14 +26,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_loader_spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-loader-spinner */ "./node_modules/react-loader-spinner/dist/esm/index.js");
+var __defProp = Object.defineProperty;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
 const { useEffect, useState } = wp.element;
+const { ToggleControl } = wp.components;
+const { InspectorControls, useBlockProps } = wp.blockEditor;
 
-const Edit = () => {
+const Edit = ({ attributes }) => {
   const [list, setList] = useState([]);
   const [showButton, setShowButton] = useState(true);
   const [counter, setCounter] = useState(1);
   const [showLoader, setLoader] = useState(true);
   const [loadMoreText, setloadMoreText] = useState("Show List");
+  const [enableColumn, setColumns] = useState(attributes.showColums);
   let headers = ["ID", "First Name", "Last Name", "Email", "Date"];
   useEffect(() => {
     let fetchList = fetch(miusage.miusage_json_url + "?number=" + counter);
@@ -57,13 +76,16 @@ const Edit = () => {
     });
   }
   let list_keys = Object.keys(list);
-  return /* @__PURE__ */ React.createElement("div", { className: "miusage-parent-wrapper" }, /* @__PURE__ */ React.createElement("div", { className: "miusage-header" }, /* @__PURE__ */ React.createElement("a", { className: "miusage-posts", href: "#" }, "Users")), /* @__PURE__ */ React.createElement("div", { className: "miusage-users-list" }, showLoader && /* @__PURE__ */ React.createElement(react_loader_spinner__WEBPACK_IMPORTED_MODULE_0__.LineWave, { height: "100", width: "100", color: "#4fa94d", ariaLabel: "line-wave", wrapperStyle: "", wrapperClass: "miusage-line-wave", visible: true, firstLineColor: "", middleLineColor: "", lastLineColor: "" }), !showLoader && /* @__PURE__ */ React.createElement("table", { className: "miusage-users-table" }, /* @__PURE__ */ React.createElement("tr", { className: "miusage-users-headers" }, headers.map((value) => {
+  let blockProps = useBlockProps();
+  return /* @__PURE__ */ React.createElement("div", __spreadValues({}, blockProps), /* @__PURE__ */ React.createElement(InspectorControls, null, /* @__PURE__ */ React.createElement("div", { className: "miusage-toggle-control" }, /* @__PURE__ */ React.createElement(ToggleControl, { checked: enableColumn, label: "Enable/Disable Columns", onChange: () => {
+    setColumns((state) => !state);
+  } }))), /* @__PURE__ */ React.createElement("div", { className: "miusage-parent-wrapper" }, /* @__PURE__ */ React.createElement("div", { className: "miusage-header" }, /* @__PURE__ */ React.createElement("a", { className: "miusage-posts", href: "#" }, "Users")), enableColumn && /* @__PURE__ */ React.createElement("div", { className: "miusage-users-list" }, showLoader && /* @__PURE__ */ React.createElement(react_loader_spinner__WEBPACK_IMPORTED_MODULE_0__.LineWave, { height: "100", width: "100", color: "#4fa94d", ariaLabel: "line-wave", wrapperStyle: "", wrapperClass: "miusage-line-wave", visible: true, firstLineColor: "", middleLineColor: "", lastLineColor: "" }), !showLoader && /* @__PURE__ */ React.createElement("table", { className: "miusage-users-table" }, /* @__PURE__ */ React.createElement("tr", { className: "miusage-users-headers" }, headers.map((value) => {
     return /* @__PURE__ */ React.createElement("th", null, value);
   })), list_keys.map((value) => {
     return /* @__PURE__ */ React.createElement("tr", { className: "miusage-users-data" }, Object.values(list[value]).map((value2) => {
       return /* @__PURE__ */ React.createElement("td", null, value2);
     }));
-  })), !showLoader && (showButton == true && /* @__PURE__ */ React.createElement("button", { className: "misuage-show-list", onClick: setClickedState }, loadMoreText))));
+  })), !showLoader && (showButton == true && /* @__PURE__ */ React.createElement("button", { className: "misuage-show-list", onClick: setClickedState }, loadMoreText)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -4700,10 +4722,17 @@ __webpack_require__.r(__webpack_exports__);
 const { registerBlockType } = wp.blocks;
 
 
+const attributes = {
+  showColums: {
+    type: "boolean",
+    default: true
+  }
+};
 registerBlockType("miusage/block-1", {
   title: "Miusage Block",
   description: "This is a test block",
-  category: "general",
+  attributes,
+  category: "common",
   edit: _src_Edit__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
